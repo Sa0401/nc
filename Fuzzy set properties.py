@@ -1,0 +1,68 @@
+
+import numpy as np
+a = np.array([1.0, 0.4, 0.2])
+b = np.array([0.2, 0.43, 0.44])
+c = np.array([0.2, 0.93, 0.24])
+e = np.array([1, 1, 1])
+o = np.array([0, 0, 0])
+print("A:", a)
+print("B:", b)
+print("C:", c)
+a_U_b = np.maximum(a, b)
+a_N_b = np.minimum(a, b)
+print("\nA U B:", a_U_b)
+print("A N B:", a_N_b)
+
+print("\nCommutative Property:")
+print("A U B:", np.maximum(a, b))
+print("B U A:", np.maximum(b, a))
+print("A N B:", np.minimum(a, b))
+print("B N A:", np.minimum(b, a))
+
+print("\nAssociative Property:")
+print("(A U B) U C:", np.maximum(np.maximum(a, b), c))
+print("A U (B U C):", np.maximum(a, np.maximum(b, c)))
+print("(A N B) N C:", np.minimum(np.minimum(a, b), c))
+print("A N (B N C):", np.minimum(a, np.minimum(b, c)))
+
+print("\nDistributive Property:")
+print("A U (B N C):", np.maximum(a, np.minimum(b, c)))
+print("(A U B) N (A U C):", np.minimum(np.maximum(a, b), np.maximum(a, c)))
+print("A N (B U C):", np.minimum(a, np.maximum(b, c)))
+print("(A N B) U (A N C):", np.maximum(np.minimum(a, b), np.minimum(a, c)))
+
+print("\nAbsorption Property:")
+print("A U (A N B):", np.maximum(a, np.minimum(a, b)))
+print("A:", a)
+print("A N (A U B):", np.minimum(a, np.maximum(a, b)))
+print("A:", a)
+
+print("\nIdempotent Law:")
+print("A U A:", np.maximum(a, a))
+print("A:", a)
+print("A N A:", np.minimum(a, a))
+print("A:", a)
+
+print("\nInvolution Property:")
+print("(A')' :", 1 - (1 - a))
+print("A:", a)
+
+print("\nDe Morgan's Law:")
+print("(A U B)' :", 1 - np.maximum(a, b))
+print("A' N B':", np.minimum(1 - a, 1 - b))
+print("(A N B)' :", 1 - np.minimum(a, b))
+print("A' U B':", np.maximum(1 - a, 1 - b))
+
+print("\nIdentity Property:")
+print("A U o:", np.maximum(a, o))
+print("A:", a)
+print("A N o:", np.minimum(a, o))
+print("o:", o)
+
+print("\nAxiom of Excluded Middle:")
+print("A U A':", np.maximum(a, 1 - a))
+print("E:", e)
+
+print("\nAxiom of Contradiction:")
+print("A N A':", np.minimum(a, 1 - a))
+print("o:", o)
